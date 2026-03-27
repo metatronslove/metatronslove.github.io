@@ -410,9 +410,9 @@ let totalPages = 1;
 function getBasePath() {
     if (window.location.host.includes('github.io')) {
         const pathParts = window.location.pathname.split('/');
-        return pathParts.slice(0, 3).join('/');
+        return 'https://metatronslove.github.io/github-repo-traffic-viewer' // pathParts.slice(0, 3).join('/');
     }
-    return '/github-repo-traffic-viewer';
+    return 'https://metatronslove.github.io/github-repo-traffic-viewer';
 }
 
 async function fetchTrafficData(repoName) {
