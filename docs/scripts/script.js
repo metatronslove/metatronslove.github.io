@@ -412,15 +412,15 @@ function getBasePath() {
         const pathParts = window.location.pathname.split('/');
         return pathParts.slice(0, 3).join('/');
     }
-    return '';
+    return '/github-repo-traffic-viewer';
 }
 
 async function fetchTrafficData(repoName) {
     try {
         const basePath = getBasePath();
         const [viewsRes, clonesRes] = await Promise.all([
-            fetch(`${basePath}/github-repo-traffic-viewer/data/repos/${encodeURIComponent(repoName)}/views.json`),
-            fetch(`${basePath}/github-repo-traffic-viewer/data/repos/${encodeURIComponent(repoName)}/clones.json`)
+            fetch(`${basePath}/data/repos/${encodeURIComponent(repoName)}/views.json`),
+            fetch(`${basePath}/data/repos/${encodeURIComponent(repoName)}/clones.json`)
         ]);
         
         let views = { views: [] };
@@ -471,9 +471,9 @@ async function fetchUserData() {
 async function fetchAllRepos() {
     try {
         const basePath = getBasePath();
-        const response = await fetch(`${basePath}/github-repo-traffic-viewer/data/repo-info.json`);
+        const response = await fetch(`${basePath}/data/repo-info.json`);
         if (!response.ok) {
-            const absoluteUrl = `https://${window.location.host}${basePath}/github-repo-traffic-viewer/data/repo-info.json`;
+            const absoluteUrl = `https://${window.location.host}${basePath}/data/repo-info.json`;
             const fallbackResponse = await fetch(absoluteUrl);
             if (!fallbackResponse.ok) throw new Error('Repository list not found');
             return await fallbackResponse.json();
