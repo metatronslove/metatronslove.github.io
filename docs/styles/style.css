@@ -381,3 +381,159 @@ label {
 [data-theme="dark"] select {
     background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23c9d1d9' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
 }
+
+/* ============================================
+   FOOTER STYLES - maviveyasemin.php tasarımından esinlenilmiştir
+   ============================================ */
+.site-footer {
+    margin-top: 50px;
+    padding: 30px 20px 20px;
+    border-top: 1px solid var(--border-color);
+    text-align: center;
+}
+
+.footer-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.tech-stack {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 25px;
+}
+
+.tech-stack img {
+    transition: transform 0.2s ease;
+}
+
+.tech-stack img:hover {
+    transform: translateY(-2px);
+}
+
+.social-links {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+}
+
+.social-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 20px;
+    font-family: 'Segoe UI', sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    text-decoration: none;
+    border-radius: 40px;
+    transition: all 0.2s ease;
+    cursor: pointer;
+}
+
+.social-btn .social-icon {
+    width: 18px;
+    height: 18px;
+}
+
+/* Linktree Button */
+.social-btn.linktree {
+    background: linear-gradient(135deg, #0A0A0A, #1A1A1A);
+    color: white;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+.social-btn.linktree .social-icon {
+    color: #00E676;
+}
+
+.social-btn.linktree:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.25);
+}
+
+/* Buy Me a Coffee Button */
+.social-btn.buymeacoffee {
+    background: linear-gradient(135deg, #FFDD00, #FFB800);
+    color: #1A1A1A;
+    font-weight: 600;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+.social-btn.buymeacoffee:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 14px rgba(255, 187, 0, 0.4);
+}
+
+/* YouTube Button */
+.social-btn.youtube {
+    background: linear-gradient(135deg, #FF0000, #CC0000);
+    color: white;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+.social-btn.youtube:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 14px rgba(255, 0, 0, 0.4);
+}
+
+/* Blog Link */
+.blog-link {
+    margin-top: 5px;
+}
+
+.blog-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 20px;
+    background: linear-gradient(135deg, #ff3366, #ff6633);
+    color: white;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: 600;
+    font-size: 15px;
+    text-decoration: none;
+    border-radius: 6px;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
+    transition: all 0.3s ease;
+    letter-spacing: 0.5px;
+}
+
+.blog-btn .blog-icon {
+    width: 16px;
+    height: 16px;
+}
+
+.blog-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Dark theme adjustments for footer */
+[data-theme="dark"] .social-btn.linktree {
+    background: linear-gradient(135deg, #1a1a2e, #16213e);
+}
+
+[data-theme="dark"] .social-btn.buymeacoffee {
+    background: linear-gradient(135deg, #f5b042, #e6a017);
+}
+
+@media (max-width: 600px) {
+    .social-btn {
+        padding: 6px 14px;
+        font-size: 12px;
+    }
+    
+    .social-btn .social-icon {
+        width: 14px;
+        height: 14px;
+    }
+    
+    .site-footer {
+        padding: 20px 15px 15px;
+    }
+}
