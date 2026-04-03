@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en"> <!-- Default language changed to English -->
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>GitHub Repository Traffic Viewer</title>
     <!-- Favicon -->
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='90' font-size='90'>🔷</text></svg>">
@@ -15,6 +15,11 @@
     <meta property="og:image" content="https://metatronslove.github.io/og-image.png">
     <meta property="og:url" content="https://metatronslove.github.io/">
     <meta name="twitter:card" content="summary_large_image">
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
     <!-- Chart.js 3.9.1 -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
@@ -34,83 +39,86 @@
 </head>
 
 <body>
-    <div class="language-switcher">
-        <button class="lang-btn" onclick="changeLanguage('en')">EN</button>
-        <button class="lang-btn" onclick="changeLanguage('tr')">TR</button>
-        <button class="lang-btn" onclick="toggleTheme()" style="margin-left: 10px;">
-            <span data-theme-icon="dark">🌙</span>
-            <span data-theme-icon="light">☀️</span>
-        </button>
-    </div>
-    <div class="time-range-selector" id="time-range-container" style="display:none;">
-        <label data-translate="timeRange"> Time Range: <select id="time-range">
-                <option value="1d">Last Day</option>
-                <option value="7d">Last Week</option>
-                <option value="30d" selected>Last Month</option>
-                <option value="90d">Last 3 Months</option>
-                <option value="180d">Last 6 Months</option>
-                <option value="365d">Last Year</option>
-                <option value="all">All Time</option>
-            </select>
-        </label>
-    </div>
-    <div class="per-page-selector" id="per-page-container" style="display:none;">
-        <label data-translate="perPage">
-            <select id="per-page">
-                <option value="10">10</option>
-                <option value="25" selected>25</option>
-                <option value="50">50</option>
-                <option value="100">100</option>
-            </select>
-        </label>
-    </div>
-    <h1 data-translate="title">GitHub Repository Traffic Stats</h1>
-    <div id="info-container"></div>
-    <div id="loading">Checking GitHub session...</div>
-    <div id="charts-container"></div>
-    <div class="pagination" id="pagination" style="display:none;"></div>
-    <script src="scripts/script.js"></script>
-    
-    <!-- Footer Social Links -->
-    <footer class="site-footer">
-        <div class="footer-content">
-            <div class="tech-stack">
-                <img src="https://img.shields.io/badge/HTML5-E34F26?style=flat&logo=html5&logoColor=white" alt="HTML5">
-                <img src="https://img.shields.io/badge/CSS3-1572B6?style=flat&logo=css3&logoColor=white" alt="CSS3">
-                <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=flat&logo=javascript&logoColor=black" alt="JavaScript">
+    <div class="container">
+        <div class="language-switcher">
+            <button class="lang-btn" onclick="changeLanguage('en')">EN</button>
+            <button class="lang-btn" onclick="changeLanguage('tr')">TR</button>
+            <button class="lang-btn theme-toggle" onclick="toggleTheme()">
+                <i class="fas fa-moon"></i>
+            </button>
+        </div>
+        
+        <div class="controls-wrapper">
+            <div class="time-range-selector" id="time-range-container" style="display:none;">
+                <label data-translate="timeRange"> Time Range: <select id="time-range">
+                        <option value="1d">Last Day</option>
+                        <option value="7d">Last Week</option>
+                        <option value="30d" selected>Last Month</option>
+                        <option value="90d">Last 3 Months</option>
+                        <option value="180d">Last 6 Months</option>
+                        <option value="365d">Last Year</option>
+                        <option value="all">All Time</option>
+                    </select>
+                </label>
             </div>
-            
-            <div class="social-links">
-                <a href="https://linktr.ee/metatronslove" target="_blank" class="social-btn linktree">
-                    <svg class="social-icon" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M13.5 2c-5.621 0-10.211 4.443-10.475 10h-3.025l4.537 5.687 4.463-5.687h-2.975c0-5 3.542-9 7.475-9 3.933 0 7.475 4 7.475 9s-3.542 9-7.475 9c-1.808 0-3.474-.714-4.796-1.947l-1.612 1.836c1.768 1.771 4.119 2.111 6.408 2.111 5.523 0 10-4.477 10-10s-4.477-10-10-10z"/>
-                    </svg>
-                    <span>linktr.ee</span>
-                </a>
-                <a href="https://buymeacoffee.com/metatronslove" target="_blank" class="social-btn buymeacoffee">
-                    <svg class="social-icon" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M4 6h16v2H4zm2-4h12v2H6zm14 8H4v8c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2v-8z"/>
-                    </svg>
-                    <span>Buy Me a Coffee</span>
-                </a>
-                <a href="https://youtube.com/@metatronslove" target="_blank" class="social-btn youtube">
-                    <svg class="social-icon" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.376.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.376-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
-                    </svg>
-                    <span>YouTube</span>
-                </a>
-            </div>
-            
-            <div class="blog-link">
-                <a href="https://one.fanclub.rocks/" target="_blank" class="blog-btn">
-                    <svg class="blog-icon" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M19 2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2zm0 16H5V4h14v14zM7 6h10v2H7zm0 4h10v2H7zm0 4h7v2H7z"/>
-                    </svg>
-                    <span>One Blog</span>
-                </a>
+            <div class="per-page-selector" id="per-page-container" style="display:none;">
+                <label data-translate="perPage">
+                    <select id="per-page">
+                        <option value="10">10</option>
+                        <option value="25" selected>25</option>
+                        <option value="50">50</option>
+                        <option value="100">100</option>
+                    </select>
+                </label>
             </div>
         </div>
-    </footer>
+        
+        <h1 data-translate="title">GitHub Repository Traffic Stats</h1>
+        <div id="info-container"></div>
+        <div id="loading">Checking GitHub session...</div>
+        <div id="charts-container"></div>
+        <div class="pagination" id="pagination" style="display:none;"></div>
+        
+        <!-- Footer - maviveyasemin.php tasarımıyla -->
+        <footer class="premium-footer">
+            <div class="footer-glass">
+                <div class="tech-stack">
+                    <i class="fab fa-html5"></i>
+                    <i class="fab fa-css3-alt"></i>
+                    <i class="fab fa-js"></i>
+                </div>
+                
+                <div class="social-grid">
+                    <a href="https://linktr.ee/metatronslove" target="_blank" class="social-card linktree">
+                        <i class="fas fa-tree"></i>
+                        <span>linktr.ee</span>
+                        <i class="fas fa-external-link-alt"></i>
+                    </a>
+                    <a href="https://buymeacoffee.com/metatronslove" target="_blank" class="social-card coffee">
+                        <i class="fas fa-mug-hot"></i>
+                        <span>Buy Me a Coffee</span>
+                        <i class="fas fa-external-link-alt"></i>
+                    </a>
+                    <a href="https://youtube.com/@metatronslove" target="_blank" class="social-card youtube">
+                        <i class="fab fa-youtube"></i>
+                        <span>YouTube</span>
+                        <i class="fas fa-external-link-alt"></i>
+                    </a>
+                    <a href="https://one.fanclub.rocks/" target="_blank" class="social-card blog">
+                        <i class="fas fa-blog"></i>
+                        <span>One Blog</span>
+                        <i class="fas fa-external-link-alt"></i>
+                    </a>
+                </div>
+                
+                <div class="footer-note">
+                    <i class="fas fa-shield-alt"></i> Mühendislik Standardında | Tam Mobil Uyumlu | Yüksek Performans
+                </div>
+            </div>
+        </footer>
+    </div>
+    
+    <script src="scripts/script.js"></script>
 </body>
 
 </html>
