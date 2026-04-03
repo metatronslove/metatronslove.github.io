@@ -13,6 +13,8 @@
     --bg-gradient-end: #1e293b;
     --glass-bg: rgba(30, 41, 59, 0.7);
     --glass-border: rgba(255, 255, 255, 0.1);
+    --text-color: #f1f5f9;
+    --primary-color: #3b82f6;
     --text-primary: #f1f5f9;
     --text-secondary: #94a3b8;
     --primary-blue: #3b82f6;
@@ -182,7 +184,8 @@ h1 {
 /* Loading */
 #loading {
     text-align: center;
-    padding: 2rem;
+    padding: 2rem;    
+    margin-bottom: 1.5em;
     background: var(--glass-bg);
     backdrop-filter: blur(12px);
     border-radius: 1.5rem;
