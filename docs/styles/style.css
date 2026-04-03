@@ -29,7 +29,7 @@
 [data-theme="light"] {
     --bg-gradient-start: #f0f2f5;
     --bg-gradient-end: #e2e8f0;
-    --glass-bg: rgba(255, 255, 255, 0.8);
+    --glass-bg: rgba(20, 66, 66, 0.8);
     --glass-border: rgba(0, 0, 0, 0.1);
     --text-primary: #1e293b;
     --text-secondary: #475569;
